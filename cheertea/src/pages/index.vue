@@ -8,7 +8,7 @@
 <script>
 
   //导入组件
-  import Headers from '@/components/common/commonHeader.vue'
+  import Headers from '@/components/common/searchHeader.vue'
   import Footers from '@/components/common/commonFooter.vue'
   import swipeBanner from '@/components/common/swipeBanner.vue'
   import {mapGetters} from 'vuex'
@@ -48,8 +48,10 @@
   }
 </script>
 <style>
+  #indexwrap {
+    width: 100%;
+  }
   .mint-swipe {
-    top: 1.34rem;
     height: 5rem;
   }
   .mint-swipe-indicators {

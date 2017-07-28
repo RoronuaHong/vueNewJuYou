@@ -1,19 +1,12 @@
 <template>
-  <mt-swipe :auto="3000">
+  <mt-swipe :auto="3000" :prevent="false" :stopPropagation="false">
     <mt-swipe-item
       v-for="item in swipeData"
       :key="item.id"
     >
-      <router-link :to="item.url">
-        <img :src="item.atturl" alt="">
-      </router-link>
+      <img :src="item.atturl" alt="" @click='go(item.url)'>
     </mt-swipe-item>
   </mt-swipe>
-  <!--<mt-swipe :auto="3000">-->
-    <!--<mt-swipe-item>-->
-      <!--<img src="http://images.cheertea.com/logobanner1.png" alt="">-->
-    <!--</mt-swipe-item>-->
-  <!--</mt-swipe>-->
 </template>
 <script>
     // 导入组件
@@ -25,10 +18,16 @@
 
         }
       },
-      props: ["swipeData"]
+      props: ["swipeData"],
+      methods: {
+        go(path) {
+            console.log(path);
+            this.$router.push(path);
+        }
+      }
     }
 </script>
 <!--&lt;!&ndash; 样式代码 &ndash;&gt;-->
-<!--<style>-->
-  <!---->
-<!--</style>-->
+<style>
+
+</style>

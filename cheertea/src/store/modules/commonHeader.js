@@ -1,6 +1,5 @@
 export const state = {
   title: {
-    Index: "巨柚",
     Classify: "分类",
     Car: "购物车",
     Personcenter: "个人中心"

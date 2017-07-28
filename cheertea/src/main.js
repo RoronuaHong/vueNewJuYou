@@ -22,6 +22,7 @@ import store from './store'
 
 Vue.config.productionTip = false;
 Vue.use(MintUI);
+
 Vue.prototype.$http = axios;
 
 /*设置baseURL*/

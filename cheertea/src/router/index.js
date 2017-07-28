@@ -5,6 +5,7 @@ import Index from '@/pages/index'
 import Classify from '@/pages/classify/classify'
 import Car from '@/pages/car/car'
 import Personcenter from '@/pages/personcenter/personcenter'
+import Searchs from '@/pages/searchs/Searchs'
 
 Vue.use(Router);
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/personcenter',
       name: 'Personcenter',
       component: Personcenter
+    },
+    {
+      path: '/searchs',
+      name: 'Searchs',
+      component: Searchs
     }
   ]
 })

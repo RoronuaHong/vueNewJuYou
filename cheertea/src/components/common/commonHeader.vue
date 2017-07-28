@@ -26,4 +26,7 @@
   .mint-button {
     height: 1.34rem;
   }
+  .mintui {
+    font-size: .5rem;
+  }
 </style>
