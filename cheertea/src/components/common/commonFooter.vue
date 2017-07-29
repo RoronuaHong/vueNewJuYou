@@ -31,11 +31,6 @@
 
     //导入组件
     import { Tabbar, TabItem } from 'mint-ui';
-//    import { TabContainer, TabContainerItem } from 'mint-ui';
-    //import { Toast } from 'mint-ui';
-
-    //Vue.component(TabContainer.name, TabContainer);
-    //Vue.component(TabContainerItem.name, TabContainerItem);
 
     export default {
         data() {
@@ -76,19 +71,6 @@
             this.$router.replace(path);
           }
         }
-//        watch: {
-//          $route: function (route) {
-//
-////            var query = route.query;
-////            console.log(query);
-////            this.page = query.page;
-//          },
-//        }
     }
 </script>
-<!--&lt;!&ndash; 样式代码 &ndash;&gt;-->
-<!--<style>-->
-  <!--.mint-tabbar > .mint-tab-item.is-selected {-->
-    <!--color: #0f0;-->
-  <!--}-->
-<!--</style>-->
+

@@ -20,6 +20,11 @@ exports.cssLoaders = function (options) {
     }
   }
 
+  //解决.js文件require/import autoprefixer问题
+  var postcssLoader = {
+    loader: 'postcss-loader'
+  }
+
   //新增px转rem
   var px2remLoader = {
     loader: 'px2rem-loader',
@@ -30,7 +35,7 @@ exports.cssLoaders = function (options) {
 
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
-    var loaders = [cssLoader, px2remLoader]
+    var loaders = [cssLoader, postcssLoader, px2remLoader]
     if (loader) {
       loaders.push({
         loader: loader + '-loader',

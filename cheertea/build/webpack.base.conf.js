@@ -31,8 +31,8 @@ module.exports = {
   module: {
     rules: [
       // {
-      //   test: /\.css$/,
-      //   loader: 'style!css!px2rem?remUnit=64&remPrecision=8'
+      //   test: /\.scss$/,
+      //   loaders: ["style", "css", "sass"]
       // },
       {
         test: /\.vue$/,
