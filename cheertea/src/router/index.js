@@ -6,6 +6,8 @@ import Classify from '@/pages/classify/classify'
 import Car from '@/pages/car/car'
 import Personcenter from '@/pages/personcenter/personcenter'
 import Searchs from '@/pages/searchs/Searchs'
+import Healthmuseum from '@/pages/healthmuseum/Healthmuseum'
+import Focusqrcode from '@/pages/focusqrcode/Focusqrcode'
 
 Vue.use(Router);
 
@@ -47,6 +49,16 @@ export default new Router({
       path: '/searchs',
       name: 'Searchs',
       component: Searchs
+    },
+    {
+      path: '/healthmuseum',
+      name: 'Healthmuseum',
+      component: Healthmuseum
+    },
+    {
+      path: '/focusqrcode',
+      name: 'Focusqrcode',
+      component: Focusqrcode
     }
   ]
 })

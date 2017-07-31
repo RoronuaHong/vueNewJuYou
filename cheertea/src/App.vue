@@ -35,4 +35,13 @@ export default {
     background: #fff;
     color: #d82619;
   }
+
+  /*修改Toast的宽高*/
+  .mint-toast {
+    min-width: 50%;
+    border-radius: .5rem;
+  }
+  .mint-toast-text {
+    font-size: 30px;
+  }
 </style>

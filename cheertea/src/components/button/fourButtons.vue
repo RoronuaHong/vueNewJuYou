@@ -6,20 +6,40 @@
         <span>{{item.name}}</span>
       </router-link>
     </li>
+    <div class="addPoint" @click="addPoint" v-if="addPoints"></div>
   </ul>
 </template>
 <script>
+
+  //导入组件
+  import { Toast } from 'mint-ui';
+
   export default {
     data() {
       return {
 
       }
     },
-    props: ['fourButtonsData']
+    props: ['fourButtonsData', 'addPoints'],
+    methods: {
+      addPoint() {
+        this.$http.get('member/login!addGreenPoint.do', { withCredentials: true })
+          .then(m => {
+            console.log(m.data);
+
+            Toast(m.data.res_info);
+
+            //未关注则直接跳转到需要关注二维码页面
+            m.data.res_code == 2 && this.$router.push('focusqrcode');
+        })
+      }
+    }
   }
 </script>
 <style>
   .content {
+    position: relative;
+    top: 0;
     width: 100%;
     height: 2.3rem;
   }
@@ -44,5 +64,13 @@
     font-size: .34rem;
     text-align: center;
     color: #6a6a6a;
+  }
+  .addPoint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 25%;
+    height: 2.3rem;
   }
 </style>

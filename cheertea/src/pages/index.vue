@@ -2,8 +2,8 @@
   <div id="indexwrap">
     <Headers :searchHeaderData="searchHeaderData"></Headers>
     <swipeBanner :swipeData="swipeData"></swipeBanner>
-    <fourButton :fourButtonsData="fourButtonsData1"></fourButton>
-    <fourButton :fourButtonsData="fourButtonsData2"></fourButton>
+    <fourButton :fourButtonsData="fourButtonsData1" :addPoints="false"></fourButton>
+    <fourButton :fourButtonsData="fourButtonsData2" :addPoints="true"></fourButton>
     <Footers></Footers>
   </div>
 </template>
@@ -61,7 +61,7 @@
             name: "开店赢钻石",
             src: "http://images.cheertea.com/img720_4.png",
             link: "chouzhuanshi"
-          }
+          },
         ],
         fourButtonsData2: [
           {
@@ -100,7 +100,7 @@
     methods: {
       /*获取swipe数据*/
       HelloAxios() {
-        this.$http.get("index/index!getIndexData.do")
+        this.$http.get("index/index!getIndexData.do", { withCredentials: true })
           .then(m => {
             console.log(m.data);
 
