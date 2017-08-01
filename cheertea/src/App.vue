@@ -3,13 +3,15 @@
     <router-view></router-view>
   </div>
 </template>
-
 <script>
-export default {
-  name: 'app'
-}
-</script>
 
+  //引入全局common.scss
+  import "@/assets/css/common/vuecommon.scss"
+
+  export default {
+    name: 'app'
+  }
+</script>
 <style>
   .mint-header {
     height: 86px;
@@ -23,6 +25,7 @@ export default {
     height: 84px;
     line-height: 84px;
     background: #fff;
+    border-top: 1px solid #ccc;
   }
   .mint-tabbar .mint-tab-item-icon {
     width: 42px;
@@ -43,5 +46,8 @@ export default {
   }
   .mint-toast-text {
     font-size: 30px;
+  }
+  .mint-tab-item-label {
+    font-size: 20px !important;
   }
 </style>

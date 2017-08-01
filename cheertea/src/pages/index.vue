@@ -4,6 +4,12 @@
     <swipeBanner :swipeData="swipeData"></swipeBanner>
     <fourButton :fourButtonsData="fourButtonsData1" :addPoints="false"></fourButton>
     <fourButton :fourButtonsData="fourButtonsData2" :addPoints="true"></fourButton>
+    <hotAnnouncement :hotAnnouncements="hotAnnouncements"></hotAnnouncement>
+    <goodBanner :goodBanners="goodBanners[0]"></goodBanner>
+    <threeGoods :getThreeAjaxData="beautyPreferredData"></threeGoods>
+    <goodBanner :goodBanners="goodBanners[1]"></goodBanner>
+    <threeGoods :getThreeAjaxData="clothesShoesData"></threeGoods>
+    <commonTitle></commonTitle>
     <Footers></Footers>
   </div>
 </template>
@@ -14,7 +20,14 @@
   import Footers from '@/components/common/commonFooter.vue'
   import swipeBanner from '@/components/common/swipeBanner.vue'
   import fourButton from '@/components/button/fourButtons.vue'
+  import hotAnnouncement from '@/components/hotAnnouncement/hotannouncement.vue'
+  import goodBanner from '@/components/title/goodBanner.vue'
+  import threeGoods from '@/components/goods/threeGoods.vue'
+  import commonTitle from '@/components/title/commonTitle.vue'
   import {mapGetters} from 'vuex'
+
+  //导入组件
+  import changeImgSrc from "@/assets/js/tools/changeImgSrc.js"
 
   export default {
     data() {
@@ -65,7 +78,7 @@
         ],
         fourButtonsData2: [
           {
-            name: "签到赢积分",
+            name: "签到领积分",
             src: "http://images.cheertea.com/img720_5.png",
             link: "addPoint"
           },
@@ -84,18 +97,81 @@
             src: "http://images.cheertea.com/img720_8.png",
             link: "zajindan"
           }
-        ]
+        ],
+        /*获取热点公告的信息*/
+        hotAnnouncements: {
+          title: "公告热点",
+          name: "尊敬的家人您好，欢迎光临巨柚商城",
+        },
+        /*专题大图*/
+        goodBanners: [
+          /*美肤优选*/
+          {
+            src: "http://images.cheertea.com/cosmetics-banner.jpg",
+            link: "cosmeticsGoodlist"
+          },
+          /*服装鞋帽*/
+          {
+            src: "http://images.cheertea.com/clothes-banner.jpg",
+            link: "clothesGoodlist"
+          }
+        ],
+        /*普通标题*/
+        commonTitleData: [
+          {
+            name: "新品上市",
+            link: ""
+          },
+          {
+            name: "进口推荐",
+            link: ""
+          },
+          {
+            name: "爆款推荐",
+            link: ""
+          },
+          {
+            name: "十元专区",
+            link: ""
+          },
+          {
+            name: "绿积分专区",
+            link: ""
+          },
+          {
+            name: "巨省钱",
+            link: ""
+          },
+          {
+            name: "热门推荐",
+            link: ""
+          }
+        ],
+        /*美肤优选*/
+        beautyPreferredData: [],
+        /*衣服鞋帽*/
+        clothesShoesData: []
       }
     },
     components: {
       Headers,
       Footers,
       swipeBanner,
-      fourButton
+      fourButton,
+      hotAnnouncement,
+      goodBanner,
+      threeGoods,
+      commonTitle
     },
-    created: function() {
+    created() {
       /*获取swipe数据*/
       this.HelloAxios();
+
+      /*美肤优选*/
+      this.getTagAjax(73);
+
+      /*衣服鞋帽*/
+      this.getTagAjax(74);
     },
     methods: {
       /*获取swipe数据*/
@@ -104,12 +180,37 @@
           .then(m => {
             console.log(m.data);
 
-            //获取banner数据并设置
+            //获取数据并设置
             this.swipeData = m.data.res_data.advList;
           })
           .catch(m => {
             console.log(m.data);
           });
+      },
+      getTagAjax(tagId) {
+        this.$http.get("goods!getGoodsListByTagId.do?tag_id=" + tagId, { withCredentials: true })
+          .then(m => {
+              console.log(m.data);
+
+              var datas = [];
+
+              //获取数据并设置
+              datas = (m.data.res_data.goodsList).slice(0, 3);
+
+              //将图片进行转换处理
+              for(var item in datas) {
+                datas[item]["image"] = window.changeImgSrc.changeFs(datas[item]["image"], "http://files.cheertea.com/statics");
+              }
+
+              /*美肤优选*/
+              tagId === 73 && (this.beautyPreferredData = datas);
+
+              /*衣服鞋帽*/
+              tagId === 74 && (this.clothesShoesData = datas);
+          })
+          .catch(m => {
+              console.log(m.data);
+          })
       }
     },
 //    computed: mapGetters(['title'])
@@ -118,6 +219,7 @@
 <style>
   #indexwrap {
     width: 100%;
+    padding-bottom: 1.39rem;
   }
   .mint-swipe {
     height: 5rem;

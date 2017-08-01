@@ -26,7 +26,6 @@
       </mt-tabbar>
     </div>
 </template>
-
 <script>
 
     //导入组件
