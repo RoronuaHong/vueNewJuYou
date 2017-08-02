@@ -6,10 +6,15 @@
     <fourButton :fourButtonsData="fourButtonsData2" :addPoints="true"></fourButton>
     <hotAnnouncement :hotAnnouncements="hotAnnouncements"></hotAnnouncement>
     <goodBanner :goodBanners="goodBanners[0]"></goodBanner>
-    <threeGoods :getThreeAjaxData="beautyPreferredData"></threeGoods>
+    <scrollThreeGoods :getThreeAjaxData="beautyPreferredData" hrefLink="abcd"></scrollThreeGoods>
     <goodBanner :goodBanners="goodBanners[1]"></goodBanner>
-    <threeGoods :getThreeAjaxData="clothesShoesData"></threeGoods>
-    <commonTitle></commonTitle>
+    <scrollThreeGoods :getThreeAjaxData="clothesShoesData" hrefLink="abc"></scrollThreeGoods>
+    <commonTitle :commonTitleData="commonTitleData[0]"></commonTitle>
+    <threeGoods :getThreeAjaxData="newListingData"></threeGoods>
+    <commonTitle :commonTitleData="commonTitleData[1]"></commonTitle>
+    <twoGoods :getTwoAjaxData="importRecommentData"></twoGoods>
+    <commonTitle :commonTitleData="commonTitleData[2]"></commonTitle>
+    <twoGoods :getTwoAjaxData="hotRecommentData"></twoGoods>
     <Footers></Footers>
   </div>
 </template>
@@ -24,9 +29,11 @@
   import goodBanner from '@/components/title/goodBanner.vue'
   import threeGoods from '@/components/goods/threeGoods.vue'
   import commonTitle from '@/components/title/commonTitle.vue'
+  import scrollThreeGoods from '@/components/goods/scrollThreeGoods.vue'
+  import twoGoods from '@/components/goods/twoGoods.vue'
   import {mapGetters} from 'vuex'
 
-  //导入组件
+  //导入js组件
   import changeImgSrc from "@/assets/js/tools/changeImgSrc.js"
 
   export default {
@@ -150,7 +157,13 @@
         /*美肤优选*/
         beautyPreferredData: [],
         /*衣服鞋帽*/
-        clothesShoesData: []
+        clothesShoesData: [],
+        /*新品上市*/
+        newListingData: [],
+        /*爆款推荐*/
+        hotRecommentData: [],
+        /*进口推荐*/
+        importRecommentData: []
       }
     },
     components: {
@@ -161,17 +174,28 @@
       hotAnnouncement,
       goodBanner,
       threeGoods,
-      commonTitle
+      commonTitle,
+      scrollThreeGoods,
+      twoGoods
     },
     created() {
       /*获取swipe数据*/
       this.HelloAxios();
 
       /*美肤优选*/
-      this.getTagAjax(73);
+      this.getTagAjax(73, 9);
 
       /*衣服鞋帽*/
-      this.getTagAjax(74);
+      this.getTagAjax(74, 9);
+
+      /*新品上市*/
+      this.getTagAjax(52, 15);
+
+      /*爆款推荐*/
+      this.getCommonAjax("hotRecommentData", 4);
+
+      /*进口推荐*/
+      this.getCommonAjax("importRecommentData", 4);
     },
     methods: {
       /*获取swipe数据*/
@@ -187,7 +211,8 @@
             console.log(m.data);
           });
       },
-      getTagAjax(tagId) {
+      /*获取tagId的商品*/
+      getTagAjax(tagId, number) {
         this.$http.get("goods!getGoodsListByTagId.do?tag_id=" + tagId, { withCredentials: true })
           .then(m => {
               console.log(m.data);
@@ -195,7 +220,11 @@
               var datas = [];
 
               //获取数据并设置
-              datas = (m.data.res_data.goodsList).slice(0, 3);
+              if(typeof number === "number") {
+                datas = (m.data.res_data.goodsList).splice(0, number);
+              } else {
+                datas = m.data.res_data.goodsList;
+              }
 
               //将图片进行转换处理
               for(var item in datas) {
@@ -207,10 +236,41 @@
 
               /*衣服鞋帽*/
               tagId === 74 && (this.clothesShoesData = datas);
+
+              /*衣服鞋帽*/
+              tagId === 52 && (this.newListingData = datas);
           })
           .catch(m => {
               console.log(m.data);
+          });
+      },
+      /*获取普通商品*/
+      getCommonAjax(types, number) {
+        this.$http.get("index/index!getIndexData.do", { withCredentials: true })
+          .then(m => {
+            console.log(m.data);
+
+            var datas = [];
+
+            //爆款推荐
+            types == "hotRecommentData" && (datas = (m.data.res_data.bktjgoodsList).splice(0, number));
+
+            //进口推荐
+            types == "importRecommentData" && (datas = (m.data.res_data.czlfgoodsList).splice(0, number));
+
+            for(var item in datas) {
+              datas[item]["image"] = window.changeImgSrc.changeFs(datas[item]["image"], "http://files.cheertea.com/statics");
+            }
+
+            //爆款推荐
+            types == "hotRecommentData" && (this.hotRecommentData = datas);
+
+            //进口推荐
+            types == "importRecommentData" && (this.importRecommentData = datas);
           })
+          .catch(m => {
+             console.log(m.data);
+          });
       }
     },
 //    computed: mapGetters(['title'])

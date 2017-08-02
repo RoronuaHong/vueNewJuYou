@@ -1,7 +1,7 @@
 <template>
   <div id="threegoods">
     <ul class="threebox clearfix">
-      <li v-for="item in getThreeAjaxData">
+      <li v-for="item in getThreeAjaxData" :ids="item.goods_id" :activityId="item.activity_id" :acpr="item.activity_price">
         <router-link to="">
           <img :src="item.image" alt="">
           <div class="contents">

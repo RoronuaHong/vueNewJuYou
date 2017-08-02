@@ -20,7 +20,6 @@
     }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
-
   .newwrap-zone-banner {
     width: 100%;
     border-top: 15px solid #e9e3e3;

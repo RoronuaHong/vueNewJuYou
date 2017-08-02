@@ -9,7 +9,28 @@
   import "@/assets/css/common/vuecommon.scss"
 
   export default {
-    name: 'app'
+    data() {
+      return {
+        name: 'app'
+      }
+    },
+    created() {
+
+      //加入百度统计
+      this.baiduCount();
+    },
+    methods: {
+      baiduCount() {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+
+      }
+    }
   }
 </script>
 <style>

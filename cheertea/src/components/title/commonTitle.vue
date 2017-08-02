@@ -1,13 +1,13 @@
 <template>
   <div id="indextitle">
-    <a href="../cn/xpssgoodlist.html">
+    <router-link :to="commonTitleData.link">
       <div class="innertitle clearfix">
         <span></span>
-        <strong>新品上市</strong>
+        <strong>{{ commonTitleData.name }}</strong>
         <span></span>
       </div>
       <span class="moresome">更多 &gt;</span>
-    </a>
+    </router-link>
   </div>
 </template>
 <script>
@@ -16,7 +16,8 @@
         return {
 
         }
-      }
+      },
+      props: ['commonTitleData']
     }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
