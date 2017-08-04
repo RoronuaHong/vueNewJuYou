@@ -4,7 +4,7 @@
       v-for="item in swipeData"
       :key="item.id"
     >
-      <img :src="item.atturl" alt="" @click='go(item.url)'>
+      <img :src="dataSrcData" :data-src="item.atturl" alt="" @click='go(item.url)'>
     </mt-swipe-item>
   </mt-swipe>
 </template>
@@ -18,7 +18,7 @@
 
         }
       },
-      props: ["swipeData"],
+      props: ["swipeData", "dataSrcData"],
       methods: {
         go(path) {
             console.log(path);

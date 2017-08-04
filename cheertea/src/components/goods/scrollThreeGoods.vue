@@ -4,7 +4,7 @@
       <ul class="scrollThreeGoodsbox">
         <li v-for="item in getThreeAjaxData" :ids="item.goods_id" :activityId="item.activity_id" :acpr="item.activity_price">
           <router-link to="a">
-            <img :src="item.image" alt="" class="imgli">
+            <img :src="dataSrcData" :data-src="item.image" alt="" class="imgli">
             <div class="contents">
               <p class="two-title">{{ item.name }}</p>
               <div class="two-price clearfix">
@@ -29,7 +29,7 @@
 
       }
     },
-    props: ['getThreeAjaxData', 'hrefLink']
+    props: ['getThreeAjaxData', 'hrefLink', 'dataSrcData']
   }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>

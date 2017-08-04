@@ -3,7 +3,7 @@
     <ul class="threebox clearfix">
       <li v-for="item in getThreeAjaxData" :ids="item.goods_id" :activityId="item.activity_id" :acpr="item.activity_price">
         <router-link to="">
-          <img :src="item.image" alt="">
+          <img :src="dataSrcData" :data-src="item.image" alt="">
           <div class="contents">
             <p class="two-title">{{ item.name }}</p>
             <div class="two-price clearfix">
@@ -16,16 +16,13 @@
   </div>
 </template>
 <script>
-
-    // 导入组件
-
     export default {
       data() {
         return {
 
         }
       },
-      props: ['getThreeAjaxData']
+      props: ['getThreeAjaxData', 'dataSrcData']
     }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>

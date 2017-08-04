@@ -2,7 +2,7 @@
   <ul class="content clearfix">
     <li v-for="item in fourButtonsData">
       <router-link :to="item.link">
-        <img :src="item.src" alt="">
+        <img :data-src="item.src" :src="dataSrcData" alt="">
         <span>{{item.name}}</span>
       </router-link>
     </li>
@@ -20,7 +20,7 @@
 
       }
     },
-    props: ['fourButtonsData', 'addPoints'],
+    props: ['fourButtonsData', 'addPoints', 'dataSrcData'],
     methods: {
       addPoint() {
         this.$http.get('member/login!addGreenPoint.do', { withCredentials: true })
@@ -56,6 +56,7 @@
     height: 1.14rem;
     margin: .2rem auto 0;
     vertical-align: middle;
+    border-radius: 50%;
   }
   .content span {
     display: block;

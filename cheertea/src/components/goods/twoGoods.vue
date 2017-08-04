@@ -2,12 +2,12 @@
   <div id="twoGoods" class="clearfix">
     <div v-for="item in getTwoAjaxData" class="recommendgoodscon" :ids="item.goods_id" :activityId="item.activity_id" :acpr="item.activity_price">
       <router-link to="ccc">
-        <img :src="item.image" :data-src="item.image" alt="">
+        <img :src="dataSrcData" :data-src="item.image" alt="">
       </router-link>
       <div class="goodsmessage">
         <div class="messages">
           <p>{{ item.name }}</p>
-          <span>￥<em>{{ item.price }}</em>.00</span>
+          <span>{{ currency || '￥'}}<em>{{ item.price }}</em>.00</span>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
 
       }
     },
-    props: ['getTwoAjaxData']
+    props: ['getTwoAjaxData', 'currency', 'dataSrcData']
   }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
