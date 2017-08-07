@@ -10,7 +10,7 @@
     <goodBanner :goodBanners="goodBanners[0]" :dataSrcData="dataSrcData.src"></goodBanner>
     <scrollThreeGoods :getThreeAjaxData="beautyPreferredData" hrefLink="abcd" :dataSrcData="dataSrcData.src"></scrollThreeGoods>
     <goodBanner :goodBanners="goodBanners[1]" :dataSrcData="dataSrcData.src"></goodBanner>
-    <scrollThreeGoods :getThreeAjaxData="clothesShoesData" hrefLink="abc"></scrollThreeGoods>
+    <scrollThreeGoods :getThreeAjaxData="clothesShoesData" hrefLink="abc" :dataSrcData="dataSrcData.src"></scrollThreeGoods>
     <goodBanner :goodBanners="goodBanners[2]" :dataSrcData="dataSrcData.src"></goodBanner>
     <commonTitle :commonTitleData="commonTitleData[0]"></commonTitle>
     <threeGoods :getThreeAjaxData="newListingData" :dataSrcData="dataSrcData.src"></threeGoods>
@@ -278,6 +278,10 @@
 
       /*巨省钱*/
       this.getCommonAjax("saveMoneyData", 9);
+    },
+    mounted() {
+      //图片懒加载
+      this.lazyLoad.init();
     },
     methods: {
       /*获取swipe数据*/

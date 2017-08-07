@@ -1,10 +1,9 @@
 <template>
-  <div id="classify">
+  <div id="personcenter">
     <Headers></Headers>
     <footers></footers>
   </div>
 </template>
-
 <script>
 
   //导入组件
@@ -14,9 +13,7 @@
   export default {
     data() {
       return {
-//        footerData: {
-//            active: "home"
-//        }
+
       }
     },
     components: {
@@ -25,7 +22,6 @@
     }
   }
 </script>
-<!-- 样式代码 -->
 <style>
 
 </style>

@@ -40,8 +40,11 @@
 
             //判断是否存在属性
             for(var i = 0; i < item.length; i++) {
+
+                //设置透明度
+                item[i].style.opacity = 0;
                 if(!!item[i].getAttribute(dataAttr)) {
-                    newItem[i] = item[i];
+                  newItem[i] = item[i];
                 }
             }
             return newItem;
@@ -98,8 +101,8 @@
                 var rights = items[i].getBoundingClientRect().right;
 
                 // if(tops <= (vHeight + this.defaults.offsetTop) && bottoms > (0 - this.defaults.offsetTop) && rights >= (0 - this.defaults.offsetLeft) && lefts <= (vWidth + this.defaults.offsetLeft)) {
-              if(tops <= (vHeight + this.defaults.offsetTop) && bottoms > (0 - this.defaults.offsetTop) || (tops === 0 && bottoms === 0 && lefts === 0 && rights === 0)) {
-                    items[i][attr] = items[i].getAttribute("data-src");
+                if(tops <= (vHeight + this.defaults.offsetTop) && bottoms > (0 - this.defaults.offsetTop) || (tops === 0 && bottoms === 0 && lefts === 0 && rights === 0)) {
+                  items[i][attr] = items[i].getAttribute("data-src");
                 }
             }
         },
