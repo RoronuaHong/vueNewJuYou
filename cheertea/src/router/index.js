@@ -8,6 +8,7 @@ import Personcenter from '@/pages/personcenter/personcenter'
 import Searchs from '@/pages/searchs/Searchs'
 import Healthmuseum from '@/pages/healthmuseum/Healthmuseum'
 import Focusqrcode from '@/pages/focusqrcode/Focusqrcode'
+import Login from '@/pages/user/login'
 
 Vue.use(Router);
 
@@ -59,6 +60,11 @@ export default new Router({
       path: '/focusqrcode',
       name: 'Focusqrcode',
       component: Focusqrcode
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })
