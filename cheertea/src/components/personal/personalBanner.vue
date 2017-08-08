@@ -1,20 +1,20 @@
 <template>
   <div id="personcenterbanner">
     <div class="personcenterbanner">
-      <p class="titleid">ID号:{{ myPointData.member_id }}</p>
+      <p class="titleid">ID号:{{ mineData.member_id }}</p>
       <div class="bannercontent clearfix">
         <div class="bannerbox">
           <img src="http://wx.qlogo.cn/mmopen/IxiaykwZCgd2BmzA1S7UpODfUgaPibr0ROIAiaxCIB8HLKONG11qokwDTscsojDjQZVyXEqpPq96UZD066ThjT0gkn71UXVcjWW/0" alt="">
         </div>
         <div class="maincon">
           <div class="name clearfix">
-            <span class="emoji">{{ myPointData.nickname }}</span>
+            <span class="emoji">{{ mineData.nickname }}</span>
             <a href="" class="identification">认证中</a>
           </div>
           <div class="personothers clearfix">
             <div class="vip">
               <img src="http://others.cheertea.com/themes/default/images/diamondimg.png" alt="">
-              <span>{{ myPointData.lvname }}</span>
+              <span>{{ mineData.lvname }}</span>
             </div>
             <a href="member_applyshop.html" class="upgrade">点我升级</a>
           </div>
@@ -30,7 +30,7 @@
 
       }
     },
-    props: ['myPointData']
+    props: ['mineData']
   }
 </script>
 <style rel="stylesheet" lang="scss" scoped>

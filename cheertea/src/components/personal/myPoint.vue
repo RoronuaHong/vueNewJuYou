@@ -3,33 +3,33 @@
     <div class="myPoint clearfix">
       <div class="myorders">
         <router-link to="">
-          <span>我的积分</span> <strong>查看全部资产</strong>
+          <span>{{ myPointData.title }}</span> <strong>{{ myPointData.other }}</strong>
         </router-link>
       </div>
-      <div class="moneycon">
-        <router-link to="">
-          <span>42829.77</span>
-          <strong>白积分</strong>
+      <div class="moneycon" v-for="item in myPointData.point">
+        <router-link :to="item.link">
+          <span>{{ item.gold }}</span>
+          <strong>{{ item.name }}</strong>
         </router-link>
       </div>
-      <div class="moneycon">
-        <router-link to="">
-          <span>42829.77</span>
-          <strong>红积分</strong>
-        </router-link>
-      </div>
-      <div class="moneycon">
-        <router-link to="">
-          <span>42829.77</span>
-          <strong>绿积分</strong>
-        </router-link>
-      </div>
-      <div class="moneycon">
-        <router-link to="">
-          <span>42829.77</span>
-          <strong>预存款</strong>
-        </router-link>
-      </div>
+      <!--<div class="moneycon">-->
+        <!--<router-link to="">-->
+          <!--<span>{{ mineData.point_red }}</span>-->
+          <!--<strong>红积分</strong>-->
+        <!--</router-link>-->
+      <!--</div>-->
+      <!--<div class="moneycon">-->
+        <!--<router-link to="">-->
+          <!--<span>{{ mineData.point_green }}</span>-->
+          <!--<strong>绿积分</strong>-->
+        <!--</router-link>-->
+      <!--</div>-->
+      <!--<div class="moneycon">-->
+        <!--<router-link to="">-->
+          <!--<span>{{ myPoint.advance }}</span>-->
+          <!--<strong>预存款</strong>-->
+        <!--</router-link>-->
+      <!--</div>-->
     </div>
   </div>
 </template>
@@ -39,7 +39,8 @@
       return {
 
       }
-    }
+    },
+    props: ['myPointData']
   }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
@@ -77,6 +78,7 @@
     }
   }
   .moneycon {
+    overflow: hidden;
     float: left;
     width: 24.5%;
     margin-top: .36rem;
@@ -99,5 +101,8 @@
       text-align: center;
       color: #a6a6a6;
     }
+  }
+  .moneycon:last-child {
+    border-right: 0px solid #f0f0f0;
   }
 </style>

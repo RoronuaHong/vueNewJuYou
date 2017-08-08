@@ -288,20 +288,20 @@
       HelloAxios() {
         this.$http.get("index/index!getIndexData.do", { withCredentials: true })
           .then(m => {
-            console.log(m.data);
+//            console.log(m.data);
 
             //获取数据并设置
             this.swipeData = m.data.res_data.advList;
           })
           .catch(m => {
-            console.log(m.data);
+//            console.log(m.data);
           });
       },
       /*获取tagId的商品*/
       getTagAjax(tagId, number) {
         this.$http.get("goods!getGoodsListByTagId.do?tag_id=" + tagId, { withCredentials: true })
           .then(m => {
-              console.log(m.data);
+//              console.log(m.data);
 
               var datas = [];
 
@@ -327,14 +327,14 @@
               tagId === 52 && (this.newListingData = datas);
           })
           .catch(m => {
-              console.log(m.data);
+//              console.log(m.data);
           });
       },
       /*获取specialId商品*/
       getSpecialAjax(types, acids, number) {
         this.$http.get("goods!getGoodsListByActivityId.do?activity_id=" + acids, { withCredentials: true })
           .then(m => {
-              console.log(m.data);
+//              console.log(m.data);
 
             //获取数据
             var datas = [];
@@ -355,14 +355,14 @@
 
           })
           .catch(m => {
-              console.log(m.data);
+//              console.log(m.data);
           })
       },
       /*获取普通商品*/
       getCommonAjax(types, number) {
         this.$http.get("index/index!getIndexData.do", { withCredentials: true })
           .then(m => {
-            console.log(m.data);
+//            console.log(m.data);
 
             var datas = [];
 
@@ -401,7 +401,7 @@
             types === "newHotRecommentData" && (this.newHotRecommentData = datas);
           })
           .catch(m => {
-             console.log(m.data);
+//             console.log(m.data);
           });
       }
     },
@@ -412,6 +412,9 @@
   #indexwrap {
     width: 100%;
     padding-bottom: 1.39rem;
+  }
+  .mint-tab-item {
+    position: relative;
   }
   .mint-swipe {
     height: 5rem;
