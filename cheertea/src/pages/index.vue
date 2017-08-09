@@ -413,9 +413,6 @@
     width: 100%;
     padding-bottom: 1.39rem;
   }
-  .mint-tab-item {
-    position: relative;
-  }
   .mint-swipe {
     height: 5rem;
   }

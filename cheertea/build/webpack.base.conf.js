@@ -1,3 +1,4 @@
+var webpack = require('webpack')
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
@@ -67,7 +68,18 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: resolve('src/assets/js/lib/zepto.min.js'),
+        loader: 'exports-loader?window.$!script-loader'
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: resolve('src/assets/js/lib/zepto.min.js'),
+      Zepto: resolve('src/assets/js/lib/zepto.min.js'),
+      "window.Zepto": resolve('src/assets/js/lib/zepto.min.js')
+    })
+  ]
 }

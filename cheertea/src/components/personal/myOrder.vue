@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <div class="customerservice clearfix">
-        <li v-for="item in myOrderData.order">
+        <li v-for="item in myOrderData.order" :key="item.id">
           <router-link :to="item.link">
             <img :src="item.src" alt="" class="orderimg">
             {{ item.name }}

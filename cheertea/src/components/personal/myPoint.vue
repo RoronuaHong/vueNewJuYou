@@ -6,7 +6,7 @@
           <span>{{ myPointData.title }}</span> <strong>{{ myPointData.other }}</strong>
         </router-link>
       </div>
-      <div class="moneycon" v-for="item in myPointData.point">
+      <div class="moneycon" v-for="item in myPointData.point" :key="item.id">
         <router-link :to="item.link">
           <span>{{ item.gold }}</span>
           <strong>{{ item.name }}</strong>

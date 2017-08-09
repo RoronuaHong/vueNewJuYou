@@ -19,7 +19,7 @@
               slot="icon"
               :key="item.id"
               :src="item.srcsel"
-              v-if="active == item.id"
+              v-else="active == item.id"
             >
             <em class="emnum" v-if="item.num > 0">{{ item.num }}</em>
             {{item.names}}
@@ -80,7 +80,6 @@
           this.$http.get("member/cart!getNum.do", { withCredentials: true })
             .then(m => {
               (m.data.res_code === 1) && (this.footData[2]["num"] = m.data.res_data.num);
-              console.log(this.footData[2]["num"])
             })
             .catch(m => {
 //              console.log(m.data);
@@ -90,6 +89,9 @@
     }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
+  .mint-tab-item {
+    position: relative;
+  }
   .emnum {
     position: absolute;
     top: .05rem;
@@ -97,7 +99,7 @@
     width: .4rem;
     height: .4rem;
     line-height: .4rem;
-    font-size: .15rem;
+    font-size: .25rem;
     background: #d82619;
     color: white;
     border-radius: 50%;

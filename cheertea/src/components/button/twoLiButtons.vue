@@ -1,7 +1,7 @@
 <template>
   <div id="buyershop">
     <div class="buyershop clearfix">
-      <router-link to="" v-for="item in twoLiButtonsData">
+      <router-link to="" v-for="item in twoLiButtonsData" :key="item.id">
         <li :style="item.back">{{ item.name }}</li>
       </router-link>
     </div>

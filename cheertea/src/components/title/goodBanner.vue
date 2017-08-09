@@ -26,16 +26,6 @@
     height: 5rem;
     border-top: 15px solid #e9e3e3;
   }
-/*  .newwrap-zone-banner:before {
-    position: absolute;
-    left: 30px;
-    bottom: -5px;
-    content: " ";
-    width: 0px;
-    height: 0px;
-    border: 25px solid transparent;
-    border-bottom-color: #fff;
-  }*/
   img {
     display: block;
     width: 100%;

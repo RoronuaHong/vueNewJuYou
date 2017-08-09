@@ -19,15 +19,18 @@ import axios from 'axios'
 /*引入vuex*/
 import store from './store'
 
+/*引入Zepto*/
+import Zepto from './assets/js/lib/zepto.min'
+
 Vue.config.productionTip = false;
 Vue.use(MintUI);
 
 Vue.prototype.$http = axios;
 
 /*设置baseURL*/
-axios.defaults.baseURL = 'http://wx.cheertea.com/';
+// axios.defaults.baseURL = 'http://wx.cheertea.com/';
 // axios.defaults.baseURL = 'http://test.cheertea.com/';
-// axios.defaults.baseURL = 'http://192.168.2.21:8080/zxxt_qyy/';
+axios.defaults.baseURL = 'http://192.168.2.29:8888/zxxt_qyy/';
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 

@@ -1,6 +1,6 @@
 <template>
   <div id="personcenter">
-    <Pcban :mineData="mineData"></Pcban>
+    <Pcban :mineData="mineData" :datas="datas"></Pcban>
     <div class="box">
       <mt-navbar v-model="active">
         <mt-tab-item id="1">我是卖家<em>商家</em></mt-tab-item>
@@ -9,7 +9,7 @@
       <div class="page-tab-container">
         <mt-tab-container v-model="active">
           <mt-tab-container-item id="1">
-
+            <threeLiButtons :BussinessData="BussinessData"></threeLiButtons>
           </mt-tab-container-item>
           <mt-tab-container-item id="2">
             <myPoint :myPointData="myPointData"></myPoint>
@@ -38,6 +38,7 @@
   import myPoint from '@/components/personal/myPoint.vue'
   import myOrder from '@/components/personal/myOrder.vue'
   import twoLiButtons from '@/components/button/twoLiButtons.vue'
+  import threeLiButtons from '@/components/button/threeLiButtons.vue'
 
   //导入js
   import * as Emojis from '@/assets/js/lib/emoji.js'
@@ -45,6 +46,7 @@
   export default {
     data() {
       return {
+        datas: "",
         active: '2',
         /*我的资料数据*/
         mineData: {},
@@ -222,6 +224,44 @@
             },
             link: ""
           }
+        ],
+        /*商家数据*/
+        BussinessData: [
+          {
+            name: "我的商品",
+            src: "http://images.cheertea.com/bullsimg1.png",
+            link: ""
+          },
+          {
+            name: "我要收银",
+            src: "http://images.cheertea.com/bullsimg2.png",
+            link: ""
+          },
+          {
+            name: "订单中心",
+            src: "http://images.cheertea.com/bullsimg3.png",
+            link: ""
+          },
+          {
+            name: "店铺设置",
+            src: "http://images.cheertea.com/bullsimg4.png",
+            link: ""
+          },
+          {
+            name: "推广店铺",
+            src: "http://images.cheertea.com/bullsimg5.png",
+            link: ""
+          },
+          {
+            name: "预览店铺",
+            src: "http://images.cheertea.com/bullsimg6.png",
+            link: ""
+          },
+          {
+            name: "绿积分充值",
+            src: "http://images.cheertea.com/greenpointbg.png",
+            link: ""
+          }
         ]
       }
     },
@@ -231,7 +271,8 @@
       Pcban,
       myPoint,
       myOrder,
-      twoLiButtons
+      twoLiButtons,
+      threeLiButtons
     },
     created() {
 
@@ -239,11 +280,16 @@
       this.getPersonalData();
     },
     mounted() {
-        var that = this;
+//      var that = this;
       /*使用emoji*/
-      setTimeout(function() {
-        that.emojiFun();
-      }, 0)
+//      setTimeout(function() {
+//        that.emojiFun();
+//      }, 200);
+    },
+    computed: {
+      emojiFun() {
+        return Emojis.Emoji.emoji(this.mineData.nickname);
+      }
     },
     methods: {
       getPersonalData() {
@@ -256,7 +302,17 @@
 
             if(m.data.res_code === 1) {
               this.mineData = m.data.res_data.member;
-              console.log(this.mineData)
+              console.log(this.mineData);
+
+              //获取emoji的数据
+              console.log(this.mineData.nickname);
+              var a = this.mineData.nickname;
+              console.log(decodeURI(a));
+              console.log(decodeURIComponent(a));
+              var aa = "\u638c\u4e0a\u5de5\u5382\u002d\u5c0f\u96c5";
+              console.log(aa);
+
+              this.datas = decodeURI(this.mineData.nickname);
 
               //截取积分保留两位小数
               this.myPointData.point[0].gold = (this.mineData.point).toFixed(2);
@@ -275,12 +331,12 @@
 //            console.log(m.data);
           });
       },
-      emojiFun() {
-
-        /*获取emoji的html*/
-        var emojiEle = document.querySelector(".emoji");
-        var emojiHtml = Emojis.Emoji.emoji(emojiEle);
-      },
+//      emojiFun(name) {
+//        /*获取emoji的html*/
+////        console.log(this.mineData);
+////        var emojiHtml = Emojis.Emoji.emoji(emojiEle);
+//
+//      },
       downapp() {
         var u = navigator.userAgent,
           isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1,
