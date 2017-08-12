@@ -4,7 +4,8 @@ export const state = {
     Car: "购物车",
     Personcenter: "个人中心",
     Healthmuseum: "养生馆",
-    Focusqrcode: "关注公众号"
+    Focusqrcode: "关注公众号",
+    Login: "登录"
   }
 }
 

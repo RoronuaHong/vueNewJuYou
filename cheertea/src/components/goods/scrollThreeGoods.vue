@@ -34,9 +34,11 @@
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
   #scrollThreeGoods {
+    overflow-x: auto;
     width: 100%;
     height: 300px;
     padding: 15px 0;
+    -webkit-overflow-scrolling: touch;
   }
   .outerbox {
     overflow-x: auto;

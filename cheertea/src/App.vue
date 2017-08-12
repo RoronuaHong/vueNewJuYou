@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <loading v-show="loading"></loading>
+    <transition name="fade" mode="out-in">
+      <!--<keep-alive>-->
+        <router-view></router-view>
+      <!--</keep-alive>-->
+    </transition>
   </div>
 </template>
 <script>
 
   //全局引入common.scss
   import "@/assets/css/common/vuecommon.scss"
+  import { mapGetters } from 'vuex'
 
   export default {
     data() {
@@ -18,7 +24,13 @@
 
       //加入百度统计
       this.baiduCount();
+
+      //设置mintUI
+      this.setEle();
     },
+    computed: mapGetters([
+      'loading'
+    ]),
     methods: {
       /*百度统计*/
       baiduCount() {
@@ -29,6 +41,14 @@
           var s = document.getElementsByTagName("script")[0];
           s.parentNode.insertBefore(hm, s);
         })();
+      },
+      /*设置mintUI*/
+      setEle() {
+        var ele = document.querySelectorAll('.mint-cell .mint-cell-wrapper');
+        ele = Array.prototype.slice.call(ele);
+        ele.forEach((item)=> {
+          item.style.fontSize = ".4rem";
+        });
       }
     }
   }
@@ -70,5 +90,16 @@
   }
   .mint-tab-item-label {
     font-size: 20px !important;
+  }
+  .mint-field-state .mintui {
+      font-size: .5rem !important;
+  }
+  /*淡入淡出效果*/
+  .fade-enter-active, .fade-leave-active {
+    opacity: 1;
+    transition: opacity .1s
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0
   }
 </style>

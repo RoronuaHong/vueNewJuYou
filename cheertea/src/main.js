@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './assets/js/tools/lazyLoadPlugin.min.js'
+import Loading from './components/common/loading'
+
+import './assets/js/tools/lazyLoadPlugin.min'
 
 //引入fastclick
 import FastClick from 'fastclick'
@@ -25,14 +27,34 @@ import Zepto from './assets/js/lib/zepto.min'
 Vue.config.productionTip = false;
 Vue.use(MintUI);
 
+/*引入loading*/
+Vue.use(Loading);
+
 Vue.prototype.$http = axios;
 
 /*设置baseURL*/
-// axios.defaults.baseURL = 'http://wx.cheertea.com/';
+axios.defaults.baseURL = 'http://wx.cheertea.com/';
 // axios.defaults.baseURL = 'http://test.cheertea.com/';
-axios.defaults.baseURL = 'http://192.168.2.29:8888/zxxt_qyy/';
+// axios.defaults.baseURL = 'http://192.168.2.21:8080/zxxt_qyy/';
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+/*设置loading*/
+/*配置发送请求的信息*/
+axios.interceptors.request.use((config) => {
+  store.dispatch("showLoading");
+  return config;
+}, (error) => {
+  return Promise.reject(error);
+});
+
+/*配置响应请求的信息*/
+axios.interceptors.response.use((response) => {
+  store.dispatch("hideLoading");
+  return response;
+}, (error) => {
+  return Promise.reject(error);
+});
 
 //执行fastclick功能
 if ('addEventListener' in document) {

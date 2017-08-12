@@ -85,7 +85,7 @@
 //              console.log(m.data);
             });
         }
-      },
+      }
     }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>

@@ -23,6 +23,9 @@
   }
 </script>
 <style>
+  .mint-header {
+    height: 1.34rem;
+  }
   .mint-button {
     height: 1.34rem;
   }

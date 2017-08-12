@@ -1,6 +1,6 @@
 <template>
   <div id="personcenter">
-    <Pcban :mineData="mineData" :datas="datas"></Pcban>
+    <Pcban :mineData="mineData"></Pcban>
     <div class="box">
       <mt-navbar v-model="active">
         <mt-tab-item id="1">我是卖家<em>商家</em></mt-tab-item>
@@ -46,7 +46,6 @@
   export default {
     data() {
       return {
-        datas: "",
         active: '2',
         /*我的资料数据*/
         mineData: {},
@@ -280,16 +279,11 @@
       this.getPersonalData();
     },
     mounted() {
-//      var that = this;
+      var that = this;
       /*使用emoji*/
-//      setTimeout(function() {
-//        that.emojiFun();
-//      }, 200);
-    },
-    computed: {
-      emojiFun() {
-        return Emojis.Emoji.emoji(this.mineData.nickname);
-      }
+      setTimeout(function() {
+        that.emojiFun();
+      }, 1000);
     },
     methods: {
       getPersonalData() {
@@ -304,15 +298,8 @@
               this.mineData = m.data.res_data.member;
               console.log(this.mineData);
 
-              //获取emoji的数据
+              //将名字用emoji进行转换
               console.log(this.mineData.nickname);
-              var a = this.mineData.nickname;
-              console.log(decodeURI(a));
-              console.log(decodeURIComponent(a));
-              var aa = "\u638c\u4e0a\u5de5\u5382\u002d\u5c0f\u96c5";
-              console.log(aa);
-
-              this.datas = decodeURI(this.mineData.nickname);
 
               //截取积分保留两位小数
               this.myPointData.point[0].gold = (this.mineData.point).toFixed(2);
@@ -331,12 +318,11 @@
 //            console.log(m.data);
           });
       },
-//      emojiFun(name) {
-//        /*获取emoji的html*/
-////        console.log(this.mineData);
-////        var emojiHtml = Emojis.Emoji.emoji(emojiEle);
-//
-//      },
+      emojiFun() {
+        /*获取emoji的html*/
+        var emojiEle = document.querySelector('.emoji');
+        var emojiHtml = Emojis.Emoji.emoji(emojiEle);
+      },
       downapp() {
         var u = navigator.userAgent,
           isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1,

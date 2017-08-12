@@ -8,7 +8,7 @@
         </div>
         <div class="maincon">
           <div class="name clearfix">
-            <span class="emoji">{{ datas }}</span>
+            <span class="emoji">{{ mineData.nickname }}</span>
             <a href="" class="identification">认证中</a>
           </div>
           <div class="personothers clearfix">
@@ -30,7 +30,7 @@
 
       }
     },
-    props: ['mineData', 'datas']
+    props: ['mineData']
   }
 </script>
 <style rel="stylesheet" lang="scss" scoped>
