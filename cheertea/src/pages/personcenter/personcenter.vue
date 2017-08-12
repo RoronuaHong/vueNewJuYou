@@ -21,7 +21,7 @@
             </div>
             <twoLiButtons :twoLiButtonsData="twoLiButtonsData"></twoLiButtons>
             <a class="download" @click="downapp">下载app</a>
-            <a class="logoff">注销账户</a>
+            <a class="logoff" @click="logoffs">注销账户</a>
           </mt-tab-container-item>
         </mt-tab-container>
       </div>
@@ -313,6 +313,11 @@
               this.myOrderData.order[2].num = m.data.res_data.toreceive_num;
               this.myOrderData.order[3].num = m.data.res_data.toservice_num;
             }
+
+            //未登录时候自动跳转到个人中心
+            if(m.data.res_code == 0) {
+              this.$router.push("login");
+            }
           })
           .catch(m => {
 //            console.log(m.data);
@@ -342,6 +347,18 @@
         }else{
           window.location.href = urls.other;
         }
+      },
+      logoffs() {
+        this.$http.get("member/logout!logout.do", {
+          withCredentials: true
+        })
+          .then(m => {
+//            console.log(m.data);
+            this.$router.push("login");
+          })
+          .catch(m => {
+//            console.log(m.data);
+          });
       }
     }
   }

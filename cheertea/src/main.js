@@ -4,6 +4,7 @@ import router from './router'
 import Loading from './components/common/loading'
 
 import './assets/js/tools/lazyLoadPlugin.min'
+import '../theme/index.css'
 
 //引入fastclick
 import FastClick from 'fastclick'

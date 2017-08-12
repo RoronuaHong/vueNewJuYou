@@ -97,7 +97,7 @@
   /*淡入淡出效果*/
   .fade-enter-active, .fade-leave-active {
     opacity: 1;
-    transition: opacity .1s
+    transition: opacity .1s;
   }
   .fade-enter, .fade-leave-active {
     opacity: 0

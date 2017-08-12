@@ -9,7 +9,14 @@
     "stage-2"
   ],
   "plugins": ["transform-runtime", ["component", [
-    { "libraryName": "mint-ui", "style": true }
+    {
+      "libraryName": "mint-ui",
+      "style": true
+    },
+    {
+      "libraryName": "element-ui",
+      "styleLibraryName": "~theme"
+    }
   ]]],
   "env": {
     "test": {

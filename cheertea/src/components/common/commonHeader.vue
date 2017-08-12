@@ -32,4 +32,7 @@
   .mintui {
     font-size: .5rem;
   }
+  .mint-header-title {
+    font-size: 40px;
+  }
 </style>
