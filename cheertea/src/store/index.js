@@ -1,19 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import states from './state'
+import state from './state'
 import mutations from './mutations'
 import getters from './getters'
 import actions from './actions'
 
 import * as commonHeader from './modules/commonHeader'
+import * as loginPage from './modules/loginPage'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
+
 export default new Vuex.Store({
-  states,
+  state,
   getters,
   mutations,
   actions,
-  modules: {
-    commonHeader
-  }
-})
+  modules: [
+    commonHeader,
+    loginPage
+  ]
+});

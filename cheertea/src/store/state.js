@@ -1,3 +1,6 @@
+// export default {
+//   loading: true
+// }
 export default {
-  loading: true
+  // count: 10
 }

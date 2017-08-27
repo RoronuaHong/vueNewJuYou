@@ -9,13 +9,6 @@ export const state = {
   }
 }
 
-//变化
-export const mutations = {
-  title(state) {
-    console.log(state.title);
-  }
-}
-
 //显示名
 export const getters = {
   title: (state) => {

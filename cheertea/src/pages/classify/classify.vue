@@ -20,7 +20,7 @@
   import "@/assets/js/tools/changeImgSrc.js"
 
   //导入store
-  import {mapGetters} from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     data() {

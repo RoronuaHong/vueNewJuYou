@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <loading v-show="loading"></loading>
+    <!--<loading v-show="loading"></loading>-->
     <transition name="fade" mode="out-in">
       <!--<keep-alive>-->
-        <router-view></router-view>
+        <router-view v-cloak></router-view>
       <!--</keep-alive>-->
     </transition>
+    <!--{{isLogin}}-->
   </div>
 </template>
 <script>
 
   //全局引入common.scss
   import "@/assets/css/common/vuecommon.scss"
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     data() {
@@ -27,11 +28,18 @@
 
       //设置mintUI
       this.setEle();
+
+      //实现微信登录
+      this.wxloginFun();
     },
-    computed: mapGetters([
-      'loading'
-    ]),
+    computed: {
+      ...mapGetters([
+//      'loading',
+//        'isLogin'
+      ]),
+    },
     methods: {
+
       /*百度统计*/
       baiduCount() {
         var _hmt = _hmt || [];
@@ -49,6 +57,28 @@
         ele.forEach((item)=> {
           item.style.fontSize = ".4rem";
         });
+      },
+      /*实现微信登录*/
+      wxloginFun() {
+        //获取微信的登录状态
+        this.$http.get("member/login!isLogin.do", {
+            withCredentials: true
+        })
+          .then(m => {
+//              console.log(m.data);
+//              console.log(this.$store.state.commonHeader);
+          })
+          .catch(m => {
+              console.log(m.data);
+          })
+      },
+//      ...mapActions([
+//        'isLogin'
+//      ])
+    },
+    watch: {
+      $route(to, from) {
+        this.$store.dispatch("isLogin", to.path);
       }
     }
   }
@@ -101,5 +131,10 @@
   }
   .fade-enter, .fade-leave-active {
     opacity: 0
+  }
+
+  /*防止闪烁*/
+  [v-cloak] {
+    display: none;
   }
 </style>

@@ -9,10 +9,11 @@ import Searchs from '@/pages/searchs/Searchs'
 import Healthmuseum from '@/pages/healthmuseum/Healthmuseum'
 import Focusqrcode from '@/pages/focusqrcode/Focusqrcode'
 import Login from '@/pages/user/login'
+import Tests from '@/pages/test'
 
 Vue.use(Router);
 
-export default new Router({
+const routers = new Router({
   path: "/",
   // component: App, //顶层路由，对应index.html
   mode: "history",
@@ -24,10 +25,15 @@ export default new Router({
       path: '*',
       redirect: '/index'
     },
-    //地址为空时跳转home页面
+    // //地址为空时跳转home页面
+    // {
+    //   path: '',
+    //   redirect: '/index'
+    // },
     {
-      path: '',
-      redirect: '/index'
+      path: '/test',
+      name: 'Test',
+      component: Tests
     },
     {
       path: '/index',
@@ -71,3 +77,27 @@ export default new Router({
     }
   ]
 })
+// /*配置微信登录*/
+// routers.beforeEach((to, from, next) => {
+//
+//   //判断是否与其中的值相同，相同则直接输出
+//   (store.state.wxLogin.wxloginList).forEach((i) => {
+//     if(to.path == i) {
+//       //判断是否登录
+//       this.$http.get("member/login!isLogin.do", {
+//         withCredentials: true
+//       })
+//         .then(m => {
+//           (m.data.res_code == 0) && this.$router.push("wxLogin");
+//         })
+//         .catch(m => {
+//           console.log(m.data);
+//         })
+//     }
+//   })
+//
+//   next();
+// });
+
+export default routers;
+

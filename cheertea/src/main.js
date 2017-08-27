@@ -40,22 +40,22 @@ axios.defaults.baseURL = 'http://wx.cheertea.com/';
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-/*设置loading*/
-/*配置发送请求的信息*/
-axios.interceptors.request.use((config) => {
-  store.dispatch("showLoading");
-  return config;
-}, (error) => {
-  return Promise.reject(error);
-});
-
-/*配置响应请求的信息*/
-axios.interceptors.response.use((response) => {
-  store.dispatch("hideLoading");
-  return response;
-}, (error) => {
-  return Promise.reject(error);
-});
+// /*设置loading*/
+// /*配置发送请求的信息*/
+// axios.interceptors.request.use((config) => {
+//   store.dispatch("showLoading");
+//   return config;
+// }, (error) => {
+//   return Promise.reject(error);
+// });
+//
+// /*配置响应请求的信息*/
+// axios.interceptors.response.use((response) => {
+//   store.dispatch("hideLoading");
+//   return response;
+// }, (error) => {
+//   return Promise.reject(error);
+// });
 
 //执行fastclick功能
 if ('addEventListener' in document) {
@@ -81,5 +81,6 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App }
+  // components: { App }
+  render: h => h(App)
 });

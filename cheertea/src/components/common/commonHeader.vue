@@ -1,5 +1,5 @@
 <template>
-  <mt-header fixed :title="title">
+  <mt-header fixed :title="title[$route.name]">
     <router-link to="/" slot="left">
       <mt-button icon="back"></mt-button>
     </router-link>
@@ -16,9 +16,9 @@
         }
     },
     computed: {
-        title() {
-          return this.$store.state.commonHeader.title[this.$route.name]
-        }
+      ...mapGetters([
+        'title'
+      ])
     }
   }
 </script>

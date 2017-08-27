@@ -283,7 +283,7 @@
       /*使用emoji*/
       setTimeout(function() {
         that.emojiFun();
-      }, 1000);
+      }, 250);
     },
     methods: {
       getPersonalData() {
@@ -315,9 +315,9 @@
             }
 
             //未登录时候自动跳转到个人中心
-            if(m.data.res_code == 0) {
-              this.$router.push("login");
-            }
+//            if(m.data.res_code == 0) {
+//              this.$router.push("login");
+//            }
           })
           .catch(m => {
 //            console.log(m.data);
@@ -333,7 +333,7 @@
           isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1,
           isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
           urls = {
-            'android':'http://onpuauo64.bkt.clouddn.com/juyoumall_1.0.5.apk',
+            'android':'http://imtt.dd.qq.com/16891/47CCB8962D58DC5AD41705631B4800F1.apk?fsname=com.cheertea.shop_1.0_1.apk&csr=1bbd',
             'ios':'https://itunes.apple.com/cn/app/%E5%B7%A8%E6%9F%9A/id1236603713?mt=8',
             'other':'http://www1.pcauto.com.cn/app/20141120/pcautoapp/index.html'
           };
@@ -447,7 +447,7 @@
     font-size: .47rem;
     text-align: center;
     border-bottom: 1px solid #ccc;
-    color: #50beff;
+    color: #ffa200;
   }
   .logoff {
     display: block;
