@@ -39,26 +39,26 @@
 //              active: ["index", "classify", "car", "personcenter"],
             footData: [
               {
-                id: "/index",
+                id: "/cns/index",
                 src: "/static/images/footerbg1.png",
                 srcsel: "/static/images/footerbg11.png",
                 names: "首页"
               },
               {
-                id: "/classify",
+                id: "/cns/classify",
                 src: "/static/images/footerbg2.png",
                 srcsel: "/static/images/footerbg22.png",
                 names: "分类"
               },
               {
-                id: "/car",
+                id: "/cns/car",
                 src: "/static/images/footerbg3.png",
                 srcsel: "/static/images/footerbg33.png",
                 names: "购物车",
                 num: "0"
               },
               {
-                id: "/personcenter",
+                id: "/cns/personcenter",
                 src: "/static/images/footerbg4.png",
                 srcsel: "/static/images/footerbg44.png",
                 names: "个人中心"

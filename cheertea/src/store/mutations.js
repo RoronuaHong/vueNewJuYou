@@ -1,15 +1,10 @@
 // import * as types from './mutations-types'
-
 import {
-  INCREMENT,
-  DECREMENT
+  SHOWLOADING,
+  HIDELOADING
 } from './mutations-types'
 
 // import getters from './getters'
-
-// const state = {
-//   count: 10
-// }
 
 // export default {
 //   showLoading(state) {
@@ -36,10 +31,10 @@ import {
 // }
 
 export default {
-  [INCREMENT](state) {
-    state.count++;
+  [SHOWLOADING](state) {
+    state.loading = true;
   },
-  [DECREMENT](state) {
-    state.count--;
+  [HIDELOADING](state) {
+    state.loading = false;
   }
 }

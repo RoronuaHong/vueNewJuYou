@@ -10,71 +10,195 @@ import Healthmuseum from '@/pages/healthmuseum/Healthmuseum'
 import Focusqrcode from '@/pages/focusqrcode/Focusqrcode'
 import Login from '@/pages/user/login'
 import Tests from '@/pages/test'
+import Freeorder from '@/pages/freeorder/freeorder'
 
 Vue.use(Router);
 
 const routers = new Router({
-  path: "/",
+  path: "/cns",
   // component: App, //顶层路由，对应index.html
   mode: "history",
+  // mode: "hash",
   scrollBehavior: () => ({
     y: 0
   }),
   routes: [
-    {
-      path: '*',
-      redirect: '/index'
-    },
-    // //地址为空时跳转home页面
+    //地址为空时跳转/cns/index页面
     // {
-    //   path: '',
-    //   redirect: '/index'
+    //   path: '*',
+    //   redirect: '/cns/index'
     // },
     {
-      path: '/test',
-      name: 'Test',
-      component: Tests
+      path: '*',
+      redirect: 'cns/index'
     },
     {
-      path: '/index',
-      name: 'Index',
-      component: Index
+      // path: '/cns/:name',
+      path: '/',
+      name: 'Cns',
+      component: App,
+      redirect: '/cns/index',
+      children: [
+        // {
+        //   path: ' ',
+        //   redirect: '/index'
+        // },
+        // {
+        //   path: '*',
+        //   redirect: '/index'
+        // },
+        {
+          path: 'cns/index',
+          name: 'Index',
+          component: Index
+        },
+        // {
+        //   path: '/test',
+        //   name: 'Test',
+        //   component: Tests
+        // },
+        // {
+        //   path: '/classify',
+        //   name: 'Classify',
+        //   component: Classify
+        // },
+        // {
+        //   path: '/car',
+        //   name: 'Car',
+        //   component: Car
+        // },
+        // {
+        //   path: '/personcenter',
+        //   name: 'Personcenter',
+        //   component: Personcenter
+        // },
+        // {
+        //   path: '/searchs',
+        //   name: 'Searchs',
+        //   component: Searchs
+        // },
+        // {
+        //   path: '/healthmuseum',
+        //   name: 'Healthmuseum',
+        //   component: Healthmuseum
+        // },
+        // {
+        //   path: '/focusqrcode',
+        //   name: 'Focusqrcode',
+        //   component: Focusqrcode
+        // },
+        // {
+        //   path: '/login',
+        //   name: 'Login',
+        //   component: Login
+        // },
+        // {
+        //   path: '/freeorder',
+        //   name: 'Freeorder',
+        //   component: Freeorder
+        // },
+        {
+          path: 'cns/test',
+          name: 'Test',
+          component: Tests
+        },
+        {
+          path: 'cns/classify',
+          name: 'Classify',
+          component: Classify
+        },
+        {
+          path: 'cns/car',
+          name: 'Car',
+          component: Car
+        },
+        {
+          path: 'cns/personcenter',
+          name: 'Personcenter',
+          component: Personcenter
+        },
+        {
+          path: 'cns/searchs',
+          name: 'Searchs',
+          component: Searchs
+        },
+        {
+          path: 'cns/healthmuseum',
+          name: 'Healthmuseum',
+          component: Healthmuseum
+        },
+        {
+          path: 'cns/focusqrcode',
+          name: 'Focusqrcode',
+          component: Focusqrcode
+        },
+        {
+          path: 'cns/login',
+          name: 'Login',
+          component: Login
+        },
+        {
+          path: 'cns/freeorder',
+          name: 'Freeorder',
+          component: Freeorder
+        }
+      ]
     },
-    {
-      path: '/classify',
-      name: 'Classify',
-      component: Classify
-    },
-    {
-      path: '/car',
-      name: 'Car',
-      component: Car
-    },
-    {
-      path: '/personcenter',
-      name: 'Personcenter',
-      component: Personcenter
-    },
-    {
-      path: '/searchs',
-      name: 'Searchs',
-      component: Searchs
-    },
-    {
-      path: '/healthmuseum',
-      name: 'Healthmuseum',
-      component: Healthmuseum
-    },
-    {
-      path: '/focusqrcode',
-      name: 'Focusqrcode',
-      component: Focusqrcode
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    }
+    // {
+    //   path: '/test',
+    //   name: 'Test',
+    //   component: Tests
+    // },
+    // {
+    //   path: '/index',
+    //   name: 'Index',
+    //   component: Index
+    // },
+    // {
+    //   path: '/classify',
+    //   name: 'Classify',
+    //   component: Classify
+    // },
+    // {
+    //   path: '/car',
+    //   name: 'Car',
+    //   component: Car
+    // },
+    // {
+    //   path: '/personcenter',
+    //   name: 'Personcenter',
+    //   component: Personcenter
+    // },
+    // {
+    //   path: '/searchs',
+    //   name: 'Searchs',
+    //   component: Searchs
+    // },
+    // {
+    //   path: '/healthmuseum',
+    //   name: 'Healthmuseum',
+    //   component: Healthmuseum
+    // },
+    // {
+    //   path: '/focusqrcode',
+    //   name: 'Focusqrcode',
+    //   component: Focusqrcode
+    // },
+    // {
+    //   path: '/login',
+    //   name: 'Login',
+    //   component: Login
+    // },
+    // {
+    //   path: '/freeorder',
+    //   name: 'Freeorder',
+    //   component: Freeorder
+    // },
+    // {
+    //   path: '/freeorder',
+    //   name: 'Freeorder',
+    //   component: WxLogin
+    // }
   ]
 })
 // /*配置微信登录*/

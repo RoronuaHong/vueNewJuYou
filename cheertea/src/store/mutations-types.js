@@ -1,2 +1,3 @@
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
+//设置显示隐藏的loading
+export const SHOWLOADING = 'SHOWLOADING';
+export const HIDELOADING = 'HIDELOADING';

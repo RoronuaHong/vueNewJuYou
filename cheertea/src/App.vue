@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <!--<loading v-show="loading"></loading>-->
+    <loading v-show="loading"></loading>
     <transition name="fade" mode="out-in">
       <!--<keep-alive>-->
         <router-view v-cloak></router-view>
       <!--</keep-alive>-->
     </transition>
-    <!--{{isLogin}}-->
   </div>
 </template>
 <script>
@@ -34,9 +33,8 @@
     },
     computed: {
       ...mapGetters([
-//      'loading',
-//        'isLogin'
-      ]),
+        'loading'
+      ])
     },
     methods: {
 
@@ -72,12 +70,18 @@
               console.log(m.data);
           })
       },
+      preventDefault() {
+        document.querySelector('body').addEventListener("click", (event) => {
+          event.preventDefault();
+        }, false);
+      }
 //      ...mapActions([
 //        'isLogin'
 //      ])
     },
     watch: {
       $route(to, from) {
+        //判断是否登录
         this.$store.dispatch("isLogin", to.path);
       }
     }
@@ -85,38 +89,38 @@
 </script>
 <style>
   .mint-header {
-    height: 86px;
-    line-height: 86px;
-    background: #fff;
-    font-size: 32px;
-    color: #1a1a1a;
-    border-bottom: 1px solid #e1e1e2;
+    height: 86px !important;
+    line-height: 86px !important;
+    background: #fff !important;
+    font-size: 32px !important;
+    color: #1a1a1a !important;
+    border-bottom: 1px solid #e1e1e2 !important;
   }
   .mint-tabbar {
-    height: 84px;
-    line-height: 84px;
-    background: #fff;
-    border-top: 1px solid #ccc;
+    height: 84px !important;
+    line-height: 84px !important;
+    background: #fff !important;
+    border-top: 1px solid #ccc !important;
   }
   .mint-tabbar .mint-tab-item-icon {
-    width: 42px;
-    height: 42px;
+    width: 42px !important;
+    height: 42px !important;
   }
   .mint-tab-item {
-    color: #414a4c;
+    color: #414a4c !important;
   }
   .mint-tabbar > .mint-tab-item.is-selected {
-    background: #fff;
-    color: #d82619;
+    background: #fff !important;
+    color: #d82619 !important;
   }
 
   /*修改Toast的宽高*/
   .mint-toast {
-    min-width: 50%;
-    border-radius: .5rem;
+    min-width: 50% !important;
+    border-radius: .5rem !important;
   }
   .mint-toast-text {
-    font-size: 30px;
+    font-size: 30px !important;
   }
   .mint-tab-item-label {
     font-size: 20px !important;
@@ -126,11 +130,11 @@
   }
   /*淡入淡出效果*/
   .fade-enter-active, .fade-leave-active {
-    opacity: 1;
-    transition: opacity .1s;
+    opacity: 1 !important;
+    transition: opacity .1s !important;
   }
   .fade-enter, .fade-leave-active {
-    opacity: 0
+    opacity: 0 !important;
   }
 
   /*防止闪烁*/

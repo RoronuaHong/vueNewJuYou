@@ -4,7 +4,6 @@
     <footers></footers>
   </div>
 </template>
-
 <script>
 
   //导入组件
@@ -26,7 +25,6 @@
     }
   }
 </script>
-<!-- 样式代码 -->
 <style>
 
 </style>

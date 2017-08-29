@@ -10,7 +10,6 @@
   </ul>
 </template>
 <script>
-
   //导入组件
   import { Toast } from 'mint-ui';
 
@@ -25,9 +24,11 @@
       addPoint() {
         this.$http.get('member/login!addGreenPoint.do', { withCredentials: true })
           .then(m => {
-            console.log(m.data);
-
+//            console.log(m.data);
             Toast(m.data.res_info);
+
+            //会员未登录则直接跳转到登录页面
+            m.data.res_code == 0 && this.$router.push({ path: 'login', query: {forward: 'index'}});
 
             //未关注则直接跳转到需要关注二维码页面
             m.data.res_code == 2 && this.$router.push('focusqrcode');

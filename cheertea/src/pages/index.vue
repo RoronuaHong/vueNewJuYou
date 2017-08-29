@@ -2,8 +2,8 @@
   <div id="indexwrap">
     <Headers :searchHeaderData="searchHeaderData"></Headers>
     <swipeBanner :swipeData="swipeData" :dataSrcData="dataSrcData.src"></swipeBanner>
-    <fourButton :fourButtonsData="fourButtonsData1" :addPoints="false" :dataSrcData="dataSrcData.src"></fourButton>
-    <fourButton :fourButtonsData="fourButtonsData2" :addPoints="true" :dataSrcData="dataSrcData.src"></fourButton>
+    <fourButton :fourButtonsData="fourButtonsData1" :addPoints="true" :dataSrcData="dataSrcData.src"></fourButton>
+    <fourButton :fourButtonsData="fourButtonsData2" :addPoints="false" :dataSrcData="dataSrcData.src"></fourButton>
     <hotAnnouncement :hotAnnouncements="hotAnnouncements"></hotAnnouncement>
     <oneTwoButtons :oneTwoButtonsData="oneTwoButtonsData" :dataSrcData="dataSrcData.src"></oneTwoButtons>
     <twoBigButtons :twoBigButtonsData="twoBigButtonsData" :dataSrcData="dataSrcData.src"></twoBigButtons>
@@ -87,50 +87,50 @@
         /*banner的数据*/
         swipeData: [],
         /*获取按钮数据*/
+        /*获取按钮数据*/
         fourButtonsData1: [
           {
-            name: "月月抽免单",
-            src: "http://images.cheertea.com/img720_1.png",
-            link: "freeday"
-          },
-          {
-            name: "商圈",
-            src: "http://images.cheertea.com/img720_2.png",
-            link: "newshopnear"
-          },
-          {
-            name: "海外购",
-            src: "http://images.cheertea.com/img720_3.png",
-            link: "oversea-purchase"
-          },
-          {
-            name: "开店赢钻石",
-            src: "http://images.cheertea.com/img720_4.png",
-            link: "chouzhuanshi"
-          },
-        ],
-        /*获取按钮数据*/
-        fourButtonsData2: [
-          {
             name: "签到领积分",
-            src: "http://images.cheertea.com/img720_5.png",
+            src: "http://images.cheertea.com/qd.png",
             link: "addPoint"
           },
           {
             name: "视频直播",
-            src: "http://images.cheertea.com/img720_6.png",
+            src: "http://images.cheertea.com/sp.png",
             link: "http://live.chanyou.net/app/index.php?i=2&c=entry&do=index&m=meepo_online"
           },
           {
             name: "养身馆",
-            src: "http://images.cheertea.com/img720_7.png",
+            src: "http://images.cheertea.com/ysg1.png",
             link: "healthmuseum"
           },
           {
             name: "720砸金蛋",
-            src: "http://images.cheertea.com/img720_8.png",
+            src: "http://images.cheertea.com/md.png",
             link: "zajindan"
           }
+        ],
+        fourButtonsData2: [
+          {
+            name: "商圈",
+            src: "http://images.cheertea.com/sq.png",
+            link: "newshopnear"
+          },
+          {
+            name: "海外购",
+            src: "http://images.cheertea.com/hyg.png",
+            link: "oversea-purchase"
+          },
+          {
+            name: "开店赢钻石",
+            src: "http://images.cheertea.com/pz.png",
+            link: "chouzhuanshi"
+          },
+          {
+            name: "月月抽免单",
+            src: "http://images.cheertea.com/md.png",
+            link: "freeorder"
+          },
         ],
         /*获取热点公告的信息*/
         hotAnnouncements: {
@@ -249,6 +249,7 @@
       returnTop
     },
     created() {
+
       /*获取swipe数据*/
       this.HelloAxios();
 

@@ -4,7 +4,7 @@
       <p class="titleid">ID号:{{ mineData.member_id }}</p>
       <div class="bannercontent clearfix">
         <div class="bannerbox">
-          <img src="http://wx.qlogo.cn/mmopen/IxiaykwZCgd2BmzA1S7UpODfUgaPibr0ROIAiaxCIB8HLKONG11qokwDTscsojDjQZVyXEqpPq96UZD066ThjT0gkn71UXVcjWW/0" alt="">
+          <img :src="mineData.weixin_face" alt="">
         </div>
         <div class="maincon">
           <div class="name clearfix">

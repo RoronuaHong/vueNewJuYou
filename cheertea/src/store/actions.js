@@ -1,13 +1,12 @@
 import * as types from './mutations-types'
-import state from './state'
-// export default {
-//   showLoading: ({commit}) => {
-//     commit("showLoading");
-//   },
-//   hideLoading: ({commit}) => {
-//     commit("hideLoading");
-//   }
-// }
+export default {
+  showLoading: ({commit}) => {
+    commit(types.SHOWLOADING);
+  },
+  hideLoading: ({commit}) => {
+    commit(types.HIDELOADING);
+  }
+}
 
 // export default {
 //   increment: ({commit}) => {

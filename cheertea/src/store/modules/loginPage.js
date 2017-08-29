@@ -12,8 +12,8 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 
 export const state = {
   loginPages: [
-    '/car',
-    '/personcenter'
+    '/cns/car',
+    '/cns/personcenter'
   ],
   loginBool: false
 }
@@ -22,9 +22,10 @@ export const actions = {
   isLogin: ({commit}, payload) => {
       axios.get('member/login!isLogin.do', { withCredentials: true })
         .then(m => {
-            // console.log(m.data);
+          // console.log(m.data);
+          payload = payload || 'index';
           if(state.loginPages.indexOf(payload) !== -1) {
-            (m.data.res_code == 0) && router.push('/login');
+            (m.data.res_code == 0) && router.push({ path: '/cns/login', query: { forward: payload }});
           }
         })
         .catch(m => {

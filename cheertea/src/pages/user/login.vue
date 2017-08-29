@@ -30,6 +30,9 @@
   import { Form, FormItem ,Input, Button } from 'element-ui'
   import Vue from 'vue'
 
+  //导入组件
+  import { Toast } from 'mint-ui';
+
   Vue.use(Form);
   Vue.use(FormItem);
   Vue.use(Input);
@@ -94,6 +97,9 @@
       Headers,
       Footers
     },
+    mounted() {
+      document.addEventListener('touchmove', function(e){e.preventDefault()}, false);
+    },
     methods: {
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
@@ -115,7 +121,7 @@
                   this.msg = " ";
                 }
 
-                !!(m.data.res_code == 1) && this.$router.push("personcenter");
+                !!(m.data.res_code == 1) && this.$router.push((this.$route.query.forward || 'index'));
               })
               .catch(m => {
 //                console.log(m.data);
@@ -126,8 +132,39 @@
         });
       },
       wxloginbtns() {
-        /*获取要跳转的页面参数*/
-//        const string = getQueryString.init("forward") || "login.html";
+
+        //共用头部
+        var publics = "http://wx.cheertea.com";
+        var appId = "wxb4868f50223328db";
+        if(window.location.host == "wx.cheertea.com") {
+          publics = "http://wx.cheertea.com";
+          appId = "wxb4868f50223328db";
+        } else if(window.location.host == "test.cheertea.com") {
+          publics = "http://test.cheertea.com";
+          appId = "wxf3c95148add7878f";
+        } else {
+          publics = "http://192.168.2.24:7077";
+        }
+
+        if(isWeiXin()) {
+          /*获取要跳转的页面参数*/
+          //appid wxf3c95148add7878f
+          window.sessionStorage.setItem("oldurl", (this.$route.query.forward || 'index'));
+          window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appId + '&redirect_uri=http%3A%2F%2F' + window.location.host + '%2F' + (this.$route.query.forward || 'index') + '&response_type=code&scope=snsapi_userinfo&state=' + (this.$route.query.state || -1) + '#wechat_redirect';
+        } else {
+//          window.location.href = publics + "weixin_login.html?forward=" + this.$route.query.forward;
+//          window.location.href = publics + this.$route.query.forward;
+          Toast("请在微信浏览器登录");
+        }
+
+        function isWeiXin() {
+          var ua = window.navigator.userAgent.toLowerCase();
+          if(ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return true;
+          }else{
+            return false;
+          }
+        }
       }
     }
   }
@@ -162,31 +199,31 @@
     margin-left: 0 !important;
   }
   .el-input {
-    height: 86px;
-    line-height: 86px;
+    height: 86px !important;
+    line-height: 86px !important;
   }
   .el-input__inner {
-    height: 100%;
-    font-size: 30px;
-    border: 2px solid #ccc;
-    border-radius: 20px;
+    height: 100% !important;
+    font-size: 30px !important;
+    border: 2px solid #ccc !important;
+    border-radius: 20px !important;
   }
   .el-button {
-    width: 100%;
-    font-size: 40px;
-    border-radius: 40px;
+    width: 100% !important;
+    font-size: 40px !important;
+    border-radius: 40px !important;
   }
   .el-form-item {
-    margin-bottom: 55px;
+    margin-bottom: 55px !important;
   }
   .el-form-item__error {
-    padding-top: 15px;
-    font-size: 30px;
+    padding-top: 15px !important;
+    font-size: 30px !important;
   }
   .el-button--primary {
-    height: 86px;
-    line-height: 50px;
-    margin-top: 30px;
+    height: 86px !important;
+    line-height: 50px !important;
+    margin-top: 30px !important;
   }
   .meri {
     width: 100%;
@@ -197,7 +234,7 @@
     color: #f00;
   }
   .wxloginbtn {
-    width: 40%;
+    width: 43%;
     height: 2.97rem;
     line-height: 400px;
     margin: 0 auto;

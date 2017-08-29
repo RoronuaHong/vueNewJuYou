@@ -283,7 +283,7 @@
       /*使用emoji*/
       setTimeout(function() {
         that.emojiFun();
-      }, 250);
+      }, 500);
     },
     methods: {
       getPersonalData() {

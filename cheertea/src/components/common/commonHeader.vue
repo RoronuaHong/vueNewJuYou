@@ -5,15 +5,14 @@
     </router-link>
   </mt-header>
 </template>
-
 <script>
   import {mapGetters} from 'vuex'
 
   export default {
     data() {
-        return {
+      return {
 
-        }
+      }
     },
     computed: {
       ...mapGetters([
