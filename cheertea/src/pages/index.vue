@@ -2,8 +2,8 @@
   <div id="indexwrap">
     <Headers :searchHeaderData="searchHeaderData"></Headers>
     <swipeBanner :swipeData="swipeData" :dataSrcData="dataSrcData.src"></swipeBanner>
-    <fourButton :fourButtonsData="fourButtonsData1" :addPoints="true" :dataSrcData="dataSrcData.src"></fourButton>
-    <fourButton :fourButtonsData="fourButtonsData2" :addPoints="false" :dataSrcData="dataSrcData.src"></fourButton>
+    <fourButton :fourButtonsData="fourButtonsData1" :addPoints="true" :addVideo="false" :dataSrcData="dataSrcData.src"></fourButton>
+    <fourButton :fourButtonsData="fourButtonsData2" :addPoints="false" :addVideo="true" :dataSrcData="dataSrcData.src"></fourButton>
     <hotAnnouncement :hotAnnouncements="hotAnnouncements"></hotAnnouncement>
     <oneTwoButtons :oneTwoButtonsData="oneTwoButtonsData" :dataSrcData="dataSrcData.src"></oneTwoButtons>
     <twoBigButtons :twoBigButtonsData="twoBigButtonsData" :dataSrcData="dataSrcData.src"></twoBigButtons>
@@ -26,7 +26,6 @@
     <threeGoods :getThreeAjaxData="saveMoneyData" :dataSrcData="dataSrcData.src"></threeGoods>
     <commonTitle :commonTitleData="commonTitleData[6]"></commonTitle>
     <twoGoods :getTwoAjaxData="newHotRecommentData" :dataSrcData="dataSrcData.src"></twoGoods>
-    <floatBox :floatBoxData="floatBoxData"></floatBox>
     <returnTop></returnTop>
     <Footers></Footers>
   </div>
@@ -34,7 +33,6 @@
 <script>
 
   //导入组件
-  import floatBox from '@/components/floatbox/floatBox'
   import Headers from '@/components/common/searchHeader.vue'
   import Footers from '@/components/common/commonFooter.vue'
   import swipeBanner from '@/components/common/swipeBanner.vue'
@@ -87,12 +85,33 @@
         /*banner的数据*/
         swipeData: [],
         /*获取按钮数据*/
-        /*获取按钮数据*/
         fourButtonsData1: [
           {
             name: "签到领积分",
             src: "http://images.cheertea.com/qd.png",
             link: "addPoint"
+          },
+          {
+            name: "商圈",
+            src: "http://images.cheertea.com/sq.png",
+            link: "shoppingdistrict"
+          },
+          {
+            name: "海外购",
+            src: "http://images.cheertea.com/hyg.png",
+            link: "oversea"
+          },
+          {
+            name: "拼团",
+            src: "http://images.cheertea.com/pt11.png",
+            link: "feedback"
+          }
+        ],
+        fourButtonsData2: [
+          {
+            name: "推荐有奖",
+            src: "http://images.cheertea.com/tj.png",
+            link: "recommendedprize"
           },
           {
             name: "视频直播",
@@ -103,28 +122,6 @@
             name: "养身馆",
             src: "http://images.cheertea.com/ysg1.png",
             link: "healthmuseum"
-          },
-          {
-            name: "720砸金蛋",
-            src: "http://images.cheertea.com/md.png",
-            link: "zajindan"
-          }
-        ],
-        fourButtonsData2: [
-          {
-            name: "商圈",
-            src: "http://images.cheertea.com/sq.png",
-            link: "newshopnear"
-          },
-          {
-            name: "海外购",
-            src: "http://images.cheertea.com/hyg.png",
-            link: "oversea-purchase"
-          },
-          {
-            name: "开店赢钻石",
-            src: "http://images.cheertea.com/pz.png",
-            link: "chouzhuanshi"
           },
           {
             name: "月月抽免单",
@@ -245,7 +242,6 @@
       twoGoods,
       oneTwoButtons,
       twoBigButtons,
-      floatBox,
       returnTop
     },
     created() {

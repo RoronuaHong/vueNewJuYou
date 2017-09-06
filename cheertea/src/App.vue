@@ -88,9 +88,12 @@
   }
 </script>
 <style>
+  body {
+    background: #fff !important;
+  }
   .mint-header {
-    height: 86px !important;
-    line-height: 86px !important;
+    height: 106px !important;
+    line-height: 106px !important;
     background: #fff !important;
     font-size: 32px !important;
     color: #1a1a1a !important;

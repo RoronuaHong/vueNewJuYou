@@ -2,24 +2,22 @@
   <ul class="content clearfix">
     <li v-for="item in fourButtonsData">
       <router-link :to="item.link">
-        <img :data-src="item.src" :src="dataSrcData" alt="">
-        <span>{{item.name}}</span>
+          <img :data-src="item.src" :src="dataSrcData" alt="">
+          <span>{{item.name}}</span>
       </router-link>
     </li>
     <div class="addPoint" @click="addPoint" v-if="addPoints"></div>
+    <a href="http://live.chanyou.net/app/index.php?i=2&c=entry&do=index&m=meepo_online" class="video" v-if="addVideo"></a>
   </ul>
 </template>
 <script>
-  //导入组件
-  import { Toast } from 'mint-ui';
-
   export default {
     data() {
       return {
 
       }
     },
-    props: ['fourButtonsData', 'addPoints', 'dataSrcData'],
+    props: ['fourButtonsData', 'addPoints', 'dataSrcData', 'addVideo'],
     methods: {
       addPoint() {
         this.$http.get('member/login!addGreenPoint.do', { withCredentials: true })
@@ -38,6 +36,14 @@
   }
 </script>
 <style>
+  .video {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    display: inline-block;
+    width: 25%;
+    height: 2.3rem;
+  }
   .content {
     position: relative;
     top: 0;

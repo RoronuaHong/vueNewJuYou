@@ -11,9 +11,11 @@ axios.defaults.baseURL = 'http://wx.cheertea.com/';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 export const state = {
+  /*需要判断登录的页面*/
   loginPages: [
     '/cns/car',
-    '/cns/personcenter'
+    '/cns/personcenter',
+    '/cns/feedback'
   ],
   loginBool: false
 }

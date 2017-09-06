@@ -5,6 +5,7 @@
       if(typeof imgurls == "string") {
         imgurls = imgurls.replace("fs:/", newimgurl + "/");
       }
+
       return imgurls;
     }
   }

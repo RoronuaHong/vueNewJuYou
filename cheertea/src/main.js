@@ -35,13 +35,13 @@ Vue.prototype.$http = axios;
 
 /*设置baseURL*/
 var publics = "http://wx.cheertea.com";
-if(window.location.host == "wx.cheertea.com") {
-  publics = "http://wx.cheertea.com";
-} else if(window.location.host == "test.cheertea.com") {
-  publics = "http://test.cheertea.com";
-} else {
-  publics = "http://192.168.2.21:8080/zxxt_qyy";
-}
+// if(window.location.host == "wx.cheertea.com") {
+//   publics = "http://wx.cheertea.com";
+// } else if(window.location.host == "test.cheertea.com") {
+//   publics = "http://test.cheertea.com";
+// } else {
+//   publics = "http://192.168.2.21:8080/zxxt_qyy";
+// }
 
 axios.defaults.baseURL = publics;
 // axios.defaults.baseURL = 'http://test.cheertea.com/';

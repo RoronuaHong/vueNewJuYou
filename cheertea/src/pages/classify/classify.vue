@@ -78,7 +78,7 @@
             this.getConData(this.leftTabData.catList[indexs].cat_id);
           })
           .catch(m => {
-            console.log(m.data);
+            console.log(m);
           });
       },
       /*获取右边的数据*/
@@ -120,7 +120,7 @@
   .box {
     overflow: hidden;
     width: 100%;
-    padding: 1.14rem 0 1.12rem;
+    padding: 105px 0 1.12rem;
     -webkit-overflow-scrolling: touch;
   }
 </style>

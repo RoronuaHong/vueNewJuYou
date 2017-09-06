@@ -6,7 +6,8 @@ export const state = {
     Healthmuseum: "养生馆",
     Focusqrcode: "关注公众号",
     Login: "登录",
-    Freeorder: "免单日"
+    Freeorder: "免单日",
+    Feedback: "意见与建议"
   }
 }
 
